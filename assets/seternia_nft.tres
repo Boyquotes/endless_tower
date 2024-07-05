@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NFTCollection" load_steps=2 format=3 uid="uid://b1tndiw6f6jxv"]
+
+[ext_resource type="Script" path="res://addons/SolanaSDK/Scripts/NFTCollection/nft_collection.gd" id="1_k6r88"]
+
+[resource]
+script = ExtResource("1_k6r88")
+mainnet_collection_id = ""
+devnet_collection_id = "3HfgFcMmKhDGs28qpJibiAwXkJjvEPEG4rKp7Q2Jg7eJ"
+first_verified_creator_mode = false
+collection_name = "seternia_pass"
