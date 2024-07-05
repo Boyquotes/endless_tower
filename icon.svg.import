@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7p8rdk8rqa8v"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://dq15ny3t87eog"
+path="res://.godot/imported/icon.svg-d7fefcbbf1044566f1ea21abf8ea1acd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://addons/SolanaSDK/icon.svg"
+dest_files=["res://.godot/imported/icon.svg-d7fefcbbf1044566f1ea21abf8ea1acd.ctex"]
 
 [params]
 
