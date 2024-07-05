@@ -1,0 +1,109 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1us4gcml3xuf"]
+
+[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_ljakk"]
+[ext_resource type="FontFile" uid="uid://dymai06rub5rj" path="res://UI/Fonts/SPECTRAL-BOLD.TTF" id="2_06ngc"]
+[ext_resource type="Texture2D" uid="uid://cto7kbgcmsiq0" path="res://UI/Background/ENDLESS TOWER - BG.png" id="2_s6hc0"]
+[ext_resource type="PackedScene" uid="uid://be2rmdwqrqiw0" path="res://addons/SolanaSDK/Scripts/WalletAdapter/WalletAdapterUI.tscn" id="4_f2c0r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m62qv"]
+bg_color = Color(0.14902, 0.0901961, 0.0313726, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.921569, 0.54902, 0.164706, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="menu_wallet" type="CanvasLayer"]
+
+[node name="menu" type="Control" parent="." node_paths=PackedStringArray("wallet_adapter")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ljakk")
+wallet_adapter = NodePath("WalletAdapterUI")
+
+[node name="color" type="ColorRect" parent="menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0862745, 0.0666667, 0.156863, 1)
+
+[node name="TextureRect" type="TextureRect" parent="menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s6hc0")
+expand_mode = 1
+
+[node name="Panel" type="Panel" parent="menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -124.0
+offset_top = 46.0
+offset_right = 124.0
+offset_bottom = 94.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.901961, 0.388235, 1)
+theme_override_fonts/font = ExtResource("2_06ngc")
+theme_override_font_sizes/font_size = 30
+text = " Endless Tower"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="connect_button" type="Button" parent="menu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.0
+offset_top = 19.0
+offset_right = 59.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_06ngc")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxFlat_m62qv")
+text = "Connect Wallet"
+
+[node name="WalletAdapterUI" parent="menu" instance=ExtResource("4_f2c0r")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.504
+anchor_right = 0.504
+offset_left = -83.28
+offset_top = -32.0
+offset_right = 337.72
+offset_bottom = 330.0
+scale = Vector2(0.4, 0.4)
+
+[connection signal="pressed" from="menu/connect_button" to="menu" method="_on_connect_button_pressed"]
