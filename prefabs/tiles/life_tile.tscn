@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbh008ndwjjyb"]
+
+[ext_resource type="Script" path="res://scripts/tiles/life_tile.gd" id="1_1fh4f"]
+[ext_resource type="AudioStream" uid="uid://cm00s45tm6vav" path="res://sfx/heal_player/562292__colorscrimsontears__heal-rpg.wav" id="2_ft1wq"]
+[ext_resource type="Texture2D" uid="uid://c640iel0qx5ij" path="res://assets/Items/#1 - Transparent Icons.png" id="2_hutcr"]
+[ext_resource type="AudioStream" uid="uid://co43dfewfvjbi" path="res://sfx/heal_player/160978__vinrax__monster_eat3.wav" id="3_1acre"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orme5"]
+atlas = ExtResource("2_hutcr")
+region = Rect2(0, 288, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8td2t"]
+atlas = ExtResource("2_hutcr")
+region = Rect2(96, 480, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d3oir"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orme5")
+}],
+"loop": true,
+"name": &"lifepot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8td2t")
+}],
+"loop": true,
+"name": &"meat",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0iu5m"]
+
+[node name="life_tile" type="Area2D"]
+script = ExtResource("1_1fh4f")
+sfx_hp_pot = [ExtResource("2_ft1wq")]
+sfx_meat = [ExtResource("3_1acre")]
+
+[node name="animated_sprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+texture_filter = 1
+scale = Vector2(0.6, 0.6)
+sprite_frames = SubResource("SpriteFrames_d3oir")
+animation = &"lifepot"
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0iu5m")
+
+[node name="audio_stream_player" type="AudioStreamPlayer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
